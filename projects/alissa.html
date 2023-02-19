@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=false;” />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Hisan Naeem - Portfolio</title>
+
+    <style>
+        body {
+            background-image: url('../assets/bg.jpg'); 
+            background-attachment: fixed;
+            background-size: 100%;
+            display: flex;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+            padding: 0;
+            font-size: 1vw;
+        }
+
+        #main-div {
+            margin-top: 20px;
+            text-align: center;
+            width: 60%;
+            height: 650px;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: start;
+            overflow-y: scroll;
+            background-color: white;
+            padding: 20px;
+        }
+        ::-webkit-scrollbar {
+            width: 0px
+
+        }
+    </style>
+</head>
+<body>
+    <div id="main-div">
+        <h1>Alissa Chatbot</h1>
+        <div>
+            <ul style="text-align: left;">
+                <li>Chatbot Application for the Google playstore</li>
+                <li>Framework: React Native</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.thecodinglad.alissa&hl=en&gl=US">Free Version - Google Play</a></li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.thecodinglad.alissapremium&hl=en&gl=US">Paid Version - Google Play</a></li>
+            </ul>
+            <p style="text-align: justify;">
+                The chatbot is based on Alice the chatbot, which is a rule based chat engine. It parses an xml script and extracts pairs of questions and answers. The input is matched against those questions and the appropriate answer is chosen. The backend was developed using Python, using a minimal application based on websockets. The paid version has additional themes and uses the text-to-speech feature to give a voice to the agent. The messages that are received are also spoken out loud.
+            </p>
+            <img src="../assets/alissa1.jpg" height="400px">
+            <img src="../assets/alissa2.jpg" height="400px">
+            <img src="../assets/alissa3.jpg" height="400px">
+        </div>
+    </div>
+</body>
+</html>

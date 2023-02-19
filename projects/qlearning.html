@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=false;” />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Hisan Naeem - Portfolio</title>
+
+    <style>
+        body {
+            background-image: url('../assets/bg.jpg'); 
+            background-attachment: fixed;
+            background-size: 100%;
+            display: flex;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+            padding: 0;
+            font-size: 1vw;
+        }
+
+        #main-div {
+            margin-top: 20px;
+            text-align: center;
+            width: 60%;
+            height: 650px;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: start;
+            overflow-y: scroll;
+            background-color: white;
+            padding: 20px;
+        }
+        ::-webkit-scrollbar {
+            width: 0px
+
+        }
+    </style>
+</head>
+<body>
+    <div id="main-div">
+        <h1>Q Learning Maze Solver</h1>
+        <div>
+            <ul style="text-align: left;">
+                <li>Solves a maze using Q learning, a type of reinforcement learning</li>
+                <li>Language: Python</li>
+                <li>GUI: Pyglet and Tkinter</li>
+                <li><a href="https://github.com/Hsn37/MazeQLearning">Github Repo</a></li>
+                <li><a href="https://www.youtube.com/watch?v=uTPzj6eK43A&ab_channel=TheCodingLad">Youtube Video</a></li>
+            </ul>
+            <p style="text-align: justify;">
+                Using reward-based reinforcement learning, the agent learns to solve the maze. There is first a maze generator, that allows users to generate various types of mazes. The user then sets the parameters for the Bellman Equation and then the agent trains. The UI allows users to view Q Values in real-time. This app helps us visualize the entire process of Q Learning to build intuition for deep Q networks.
+            </p>
+            <img src="../assets/ql1.JPG" height="500px">
+            <img src="../assets/ql2.JPG" height="400px">
+            <img src="../assets/ql3.JPG" height="400px">
+        </div>
+    </div>
+</body>
+</html>

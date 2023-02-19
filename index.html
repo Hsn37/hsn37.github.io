@@ -1,11 +1,304 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=false;” />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+    <title>Hisan Naeem - Portfolio</title>
+
+    <style>
+        body {
+            background-image: url('assets/bg.jpg'); 
+            background-attachment: fixed;
+            background-size: 100%;
+            display: flex;
+            justify-content: center;
+            font-family: 'Source Code Pro', monospace;
+            padding: 0;
+            font-size: 1vw;
+        }
+
+        #main-div {
+            margin-top: 70px;
+            text-align: center;
+            width: 60%;
+            height: 600px;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #textbox {
+            position: absolute;
+            text-align: left;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 10px;
+            width: 120px;
+            height: 30px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #1e90ca;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #0b3145;
+        }
+
+        .button:hover {
+            background-color: #00476b
+        }
+
+        .button:active {
+            background-color: #1e90ca;
+            box-shadow: 0 5px #0b3145;
+            transform: translateY(4px);
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 100%;
+            background-color: rgb(54, 54, 54);
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            text-align: center;
+            color: white;
+            padding-top: 2px;
+        }
+
+        #header-text {
+            position: absolute;
+            right: 10px;
+        }
+
+        #loading-screen {
+            position: absolute;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+
+        #progress-bar {
+            position: relative;
+            width: 200px;
+            margin-top: 5px;
+        }
+        
+        #loader {
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+
+        .link {
+            text-decoration: none;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        a {
+            color: white;
+            font: inherit;
+        }
+
+    </style>
 </head>
 <body>
-Under construction. Check back later!
+    <div id="loading-screen">
+        <img src="assets/load.png" width="100px">
+        <div id="progress-bar">
+            <div style="width: 100%; background-color: #666; height: 8px; border-radius: 5px; position: absolute;"></div>
+            <div id="loader" style="background-color: white; height: 8px; border-radius: 5px; position: absolute;"></div>
+        </div>
+    </div>
+    <div class="header">
+        <div id="header-text"></div>
+        <img src="assets/laptop.png" style="position: absolute; left: 10px; height: 20px;" >
+        ~zsh
+    </div>
+    <div id="main-div">
+        <img src="assets/terminal.png" id="terminal" style="width: 90%; position: relative;">
+        <div id="textbox"></div>
+        <div style="display: flex; flex-direction: row; justify-content: space-around; width: 60%; margin-top: 20px;">
+            <div class="button">
+                <a class="link" href="Hisan_Naeem_Resume.pdf" target="_blank">📄 Resume</a>
+            </div>
+            <div id="projects-button" class="button">🚀Projects</div>
+            <div id="contact-button" class="button">📞Contact</div>
+        </div>
+    </div>
 </body>
+<script>
+    
+    var ele = document.getElementById('textbox');
+    var terminal = document.getElementById('terminal');
+    var main_div = document.getElementById('main-div');
+    
+    var projects = [
+        "Alissa Chatbot - Google Play", 
+        "Ghambeel", 
+        "Physcloud",
+        "Q Learning Maze Solver",
+        "My Portfolio",
+        "Minesweeper", 
+        "Snake", 
+        "Tetris"
+    ]
+
+    var links = [
+        'projects/alissa',
+        'projects/ghambeel',
+        'http://cloud.physlogger.com',
+        'projects/qlearning',
+        'https://github.com/Hsn37/hsn37.github.io',
+        'https://github.com/Hsn37/minesweeper',
+        'https://github.com/Hsn37/snake',
+        'https://github.com/Hsn37/Pyglet-Tetris'
+    ]
+
+    var projects_text = ""
+    for (let i = 0; i < projects.length; i++) {
+        projects_text += `<li><a href = '${links[i]}'>${projects[i]}</a></li>`
+    }
+
+    function wait(ms) {
+        return new Promise((res) => setTimeout(res, ms))
+    }
+
+    async function type(string, element) {
+        skip = 1
+        if (element.innerHTML[element.innerHTML.length - 1] == "|")
+            element.innerHTML = element.innerHTML.substring(0, element.innerHTML.length - 1);
+        
+        if (string[0] != '~') {
+            element.innerHTML += string[0]
+        } 
+        else {
+            skip = 2
+            times = parseInt(string[1])
+
+            for (let i = 0; i < times; i++) {
+                element.innerHTML += "|";
+                await wait(50)
+                element.innerHTML = element.innerHTML.substring(0, element.innerHTML.length - 1);
+                await wait(50)
+            }         
+        }
+
+        if (string.length == 1 || (string[0] == '~' && string.length == 2))
+            return
+
+        element.innerHTML += "|";
+
+        await wait(10)
+        await type(string.substring(skip), element)
+    }
+
+    function get_date() {
+        let today = new Date();
+        let date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear() 
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        return date + ' ' + time;
+    }
+
+    async function nav_update() {
+        let header_text = document.getElementById('header-text')
+        
+        header_text.innerHTML = get_date()
+    }
+
+    function setup() {
+        rect = terminal.getBoundingClientRect();
+        rect2 = main_div.getBoundingClientRect();
+
+        ele.style.top = `${rect.top - rect2.top + 30}px`
+        ele.style.left = `${rect.left - rect2.left + 10}px`
+        ele.style.maxWidth = `${rect.right - rect.left - 20}px`
+    }
+
+    function addTag(ele, tag) {
+        ele.innerHTML += tag
+    }
+
+    async function intro() {
+        // ~n means pause for n*100 ms
+        ele.innerHTML = "<strong>meta-sys:~ hisan$ </strong> cat ./intro"
+        addTag(ele, "<br><br>")
+        await wait(700)
+
+        await type("Hello there, how are you doing?~5", ele)
+
+        addTag(ele, "<br><br>")
+        await type("I am Hisan Naeem, a Software Engineer.", ele)
+
+        addTag(ele, "<br>")
+        await type("Here you will find a list of my projects, my resume, and some useful links.", ele)
+
+        addTag(ele, "<br><br>")
+        await type("Have a look at the options below for more info :)", ele)
+    }
+
+    async function projects_handle() {
+        ele.innerHTML = "<strong>meta-sys:~ hisan$ </strong>"
+        await wait(300)
+
+        await type("ls ./projects~5", ele)
+        ele.innerHTML += "<ul>" + projects_text + "</ul>"
+    }
+
+    async function contact_handle() {
+        ele.innerHTML = "<strong>meta-sys:~ hisan$ </strong>"
+        await wait(300)
+
+        await type("cat ./contact_info.txt~3", ele)
+        addTag(ele, "<br><br>")
+
+        await type("Email: hsn37@outlook.com", ele)
+        addTag(ele, "<br>")
+
+        await type("Phone: +92 3237909001", ele)
+        addTag(ele, "<br>")
+    }
+
+    window.onload = async () => {
+        
+        document.getElementById("loader").style.width = "100%"
+        await wait(2000)
+        
+        let loader_screen = document.getElementById("loading-screen")
+
+        loader_screen.style.opacity = "0"
+        await wait(500)
+        loader_screen.style.display = "none"
+
+        setup();
+        setInterval(nav_update, 1000)
+        await intro();
+
+        document.getElementById("projects-button").addEventListener('click', projects_handle)
+        document.getElementById("contact-button").addEventListener('click', contact_handle)
+    }
+
+</script>
 </html>
