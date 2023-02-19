@@ -178,7 +178,7 @@
 
     var projects_text = ""
     for (let i = 0; i < projects.length; i++) {
-        projects_text += `<li><a href = '${links[i]}'>${projects[i]}</a></li>`
+        projects_text += `<li><a href = '${links[i]}' target="_blank">${projects[i]}</a></li>`
     }
 
     function wait(ms) {
@@ -210,7 +210,7 @@
 
         element.innerHTML += "|";
 
-        await wait(10)
+        await wait(50)
         await type(string.substring(skip), element)
     }
 
@@ -293,7 +293,7 @@
         loader_screen.style.display = "none"
 
         setup();
-        setInterval(nav_update, 1000)
+        // setInterval(nav_update, 1000)
         await intro();
 
         document.getElementById("projects-button").addEventListener('click', projects_handle)
