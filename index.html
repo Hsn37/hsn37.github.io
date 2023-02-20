@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=false;” />
+    <meta name="viewport" content="width=device-width" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
@@ -10,21 +10,21 @@
 
     <style>
         body {
-            background-image: url('assets/bg.jpg'); 
+            background-image: url('assets/bg.jpg');
             background-attachment: fixed;
             background-size: 100%;
             display: flex;
             justify-content: center;
             font-family: 'Source Code Pro', monospace;
             padding: 0;
-            font-size: 1vw;
+            font-size: 18px;
         }
 
         #main-div {
             margin-top: 70px;
             text-align: center;
+            /* height: 600px; */
             width: 60%;
-            height: 600px;
             border-radius: 20px;
             position: relative;
             display: flex;
@@ -69,14 +69,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 25px;
+            height: 30px;
             width: 100%;
             background-color: rgb(54, 54, 54);
             border-bottom-right-radius: 5px;
             border-bottom-left-radius: 5px;
             text-align: center;
             color: white;
-            padding-top: 2px;
+            padding-top: 10px;
         }
 
         #header-text {
@@ -105,7 +105,7 @@
         }
         
         #loader {
-            width: 0%;
+            width: 10%;
             transition: width 1s ease-in-out;
         }
 
@@ -121,6 +121,25 @@
             font: inherit;
         }
 
+        @media only screen and (max-width: 600px) {
+            #main-div {
+                width: 100%;
+            }
+
+            body {
+                font-size: 7px;
+            }
+
+            .button {
+                height: 20px;
+                width: 60px;
+            }
+
+            .header {
+                font-size: 11px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -133,13 +152,13 @@
     </div>
     <div class="header">
         <div id="header-text"></div>
-        <img src="assets/laptop.png" style="position: absolute; left: 10px; height: 20px;" >
+        <img src="assets/laptop.png" style="position: absolute; left: 10px; top: 2px; height: 70%;">
         ~zsh
     </div>
     <div id="main-div">
         <img src="assets/terminal.png" id="terminal" style="width: 90%; position: relative;">
         <div id="textbox"></div>
-        <div style="display: flex; flex-direction: row; justify-content: space-around; width: 60%; margin-top: 20px;">
+        <div style="display: flex; flex-direction: row; justify-content: space-around; width: 80%; margin-top: 20px;">
             <div class="button">
                 <a class="link" href="Hisan_Naeem_Resume.pdf" target="_blank">📄 Resume</a>
             </div>
@@ -298,6 +317,10 @@
 
         document.getElementById("projects-button").addEventListener('click', projects_handle)
         document.getElementById("contact-button").addEventListener('click', contact_handle)
+    }
+
+    window.onresize = () => {
+        setup()
     }
 
 </script>
