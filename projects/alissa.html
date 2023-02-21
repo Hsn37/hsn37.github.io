@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=false;” />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -17,14 +17,14 @@
             justify-content: center;
             font-family: 'Open Sans', sans-serif;
             padding: 0;
-            font-size: 1vw;
+            font-size: 18px;
         }
 
         #main-div {
             margin-top: 20px;
             text-align: center;
             width: 80%;
-            height: 650px;
+            height: 70%;
             border-radius: 20px;
             position: relative;
             display: flex;
@@ -35,10 +35,22 @@
             background-color: white;
             padding: 20px;
         }
+
+        .images {
+            height: 250px
+        }
+
         ::-webkit-scrollbar {
             width: 0px
 
         }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 11px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -54,9 +66,9 @@
             <p style="text-align: justify;">
                 The chatbot is based on Alice the chatbot, which is a rule based chat engine. It parses an xml script and extracts pairs of questions and answers. The input is matched against those questions and the appropriate answer is chosen. The backend was developed using Python, using a minimal application based on websockets. The paid version has additional themes and uses the text-to-speech feature to give a voice to the agent. The messages that are received are also spoken out loud.
             </p>
-            <img src="../assets/alissa1.jpg" height="400px">
-            <img src="../assets/alissa2.jpg" height="400px">
-            <img src="../assets/alissa3.jpg" height="400px">
+            <img src="../assets/alissa1.jpg" class="images">
+            <img src="../assets/alissa2.jpg" class="images">
+            <img src="../assets/alissa3.jpg" class="images">
         </div>
     </div>
 </body>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=false;” />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -17,14 +17,14 @@
             justify-content: center;
             font-family: 'Open Sans', sans-serif;
             padding: 0;
-            font-size: 1vw;
+            font-size: 18px;
         }
 
         #main-div {
             margin-top: 20px;
             text-align: center;
             width: 80%;
-            height: 650px;
+            height: 70%;
             border-radius: 20px;
             position: relative;
             display: flex;
@@ -35,10 +35,22 @@
             background-color: white;
             padding: 20px;
         }
+
+        .images {
+            height: 200px
+        }
+
         ::-webkit-scrollbar {
             width: 0px
 
         }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 11px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -55,9 +67,9 @@
             <p style="text-align: justify;">
                 Using reward-based reinforcement learning, the agent learns to solve the maze. There is first a maze generator, that allows users to generate various types of mazes. The user then sets the parameters for the Bellman Equation and then the agent trains. The UI allows users to view Q Values in real-time. This app helps us visualize the entire process of Q Learning to build intuition for deep Q networks.
             </p>
-            <img src="../assets/ql1.JPG" height="500px">
-            <img src="../assets/ql2.JPG" height="400px">
-            <img src="../assets/ql3.JPG" height="400px">
+            <img src="../assets/ql2.JPG" class="images">
+            <img src="../assets/ql1.JPG" class="images">
+            <img src="../assets/ql3.JPG" class="images">
         </div>
     </div>
 </body>
