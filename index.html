@@ -20,6 +20,10 @@
             font-size: 18px;
         }
 
+        li {
+            font-size: 16px;
+        }
+
         #main-div {
             margin-top: 70px;
             text-align: center;
@@ -139,6 +143,10 @@
             .header {
                 font-size: 11px;
             }
+
+            li {
+                font-size: 9px;
+            }
         }
 
     </style>
@@ -175,34 +183,21 @@
     var main_div = document.getElementById('main-div');
     
     var projects = [
-        "VillaVista",
-        "Moj Events",
-        "Alissa Chatbot - Google Play", 
-        "Ghambeel", 
-        "Physcloud",
-        "Q Learning Maze Solver",
-        "My Portfolio",
-        "Minesweeper", 
-        "Snake", 
-        "Tetris"
-    ]
-
-    var links = [
-        'https://villavistapk.com/',
-        'https://mojeventsndesigns.com/',
-        'projects/alissa',
-        'projects/ghambeel',
-        'http://cloud.physlogger.com',
-        'projects/qlearning',
-        'https://github.com/Hsn37/hsn37.github.io',
-        'https://github.com/Hsn37/minesweeper',
-        'https://github.com/Hsn37/snake',
-        'https://github.com/Hsn37/Pyglet-Tetris'
+        { name: 'VillaVista', link: 'https://villavistapk.com/' },
+        { name: 'Moj Events', link: 'https://mojeventsndesigns.com/' },
+        { name: 'Alissa Chatbot - Google Play', link: 'projects/alissa' },
+        { name: 'Ghambeel', link: 'projects/ghambeel' },
+        { name: 'Physcloud', link: 'http://cloud.physlogger.com' },
+        { name: 'Q Learning Maze Solver', link: 'projects/qlearning' },
+        { name: 'My Portfolio', link: 'https://github.com/Hsn37/hsn37.github.io' },
+        { name: 'Minesweeper', link: 'https://github.com/Hsn37/minesweeper' },
+        { name: 'Snake', link: 'https://github.com/Hsn37/snake' },
+        { name: 'Tetris', link: 'https://github.com/Hsn37/Pyglet-Tetris' }
     ]
 
     var projects_text = ""
-    for (let i = 0; i < projects.length; i++) {
-        projects_text += `<li><a href = '${links[i]}' target="_blank">${projects[i]}</a></li>`
+    for (let p of projects) {
+        projects_text += `<li><a href = '${p.link}' target="_blank">${p.name}</a></li>`
     }
 
     function wait(ms) {
