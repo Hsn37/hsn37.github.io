@@ -10,9 +10,10 @@
 
     <style>
         body {
-            background-image: url('assets/bg.jpg');
+            background-image: url('assets/bg_new.jpg');
+            background-size: cover;
             background-attachment: fixed;
-            background-size: 100%;
+            background-position: "center center";
             display: flex;
             justify-content: center;
             font-family: 'Source Code Pro', monospace;
@@ -165,7 +166,8 @@
         ~zsh
     </div>
     <div id="main-div">
-        <img src="assets/terminal.png" id="terminal" style="width: 90%; position: relative;">
+        <img src="assets/terminal_top.png" style="width: 90%; position: relative;">
+        <img src="assets/terminal_textarea.png" id="terminal" style="width: 90%; position: relative;">
         <div id="textbox"></div>
         <div style="display: flex; flex-direction: row; justify-content: space-around; width: 80%; margin-top: 20px;">
             <div class="button">
@@ -253,7 +255,7 @@
         rect = terminal.getBoundingClientRect();
         rect2 = main_div.getBoundingClientRect();
 
-        ele.style.top = `${rect.top - rect2.top + 30}px`
+        ele.style.top = `${rect.top - rect2.top + 2}px`
         ele.style.left = `${rect.left - rect2.left + 10}px`
         ele.style.maxWidth = `${rect.right - rect.left - 20}px`
     }
@@ -264,24 +266,30 @@
 
     async function intro() {
         // ~n means pause for n*100 ms
-        ele.innerHTML = "<strong>meta-sys:~ hisan$ </strong> cat ./intro"
+        ele.innerHTML = "<strong>hisan@jarvis ~ % </strong>cat ./intro"
         addTag(ele, "<br><br>")
         await wait(700)
 
         await type("Hello there, how are you doing?~5", ele)
 
         addTag(ele, "<br><br>")
-        await type("I am Hisan Naeem, a Software Engineer.", ele)
+        await type("This is Hisan. ", ele)
+        addTag(ele, "<br><br>")
+        await type("While I like to call myself a ", ele)
+        addTag(ele, "<u>Machine Learning Engineer</u> ")
+        await type("now, it'd be safe to say I've had my fair share of ", ele)
+        addTag(ele, "<u> Software Engineering</u> ")
+        await type("projects.", ele)
 
-        addTag(ele, "<br>")
-        await type("Here you will find a list of my projects, my resume, and some useful links.", ele)
+        addTag(ele, "<br><br>")
+        await type("Here you will find my resume, a list of my projects, and some useful links.", ele)
 
         addTag(ele, "<br><br>")
         await type("Have a look at the options below for more info :)", ele)
     }
 
     async function projects_handle() {
-        ele.innerHTML = "<strong>meta-sys:~ hisan$ </strong>"
+        ele.innerHTML = "<strong>hisan@jarvis ~ % </strong>"
         await wait(300)
 
         await type("ls ./projects~5", ele)
@@ -289,7 +297,7 @@
     }
 
     async function contact_handle() {
-        ele.innerHTML = "<strong>meta-sys:~ hisan$ </strong>"
+        ele.innerHTML = "<strong>hisan@jarvis ~ % </strong>"
         await wait(300)
 
         await type("cat ./contact_info.txt~3", ele)
@@ -299,6 +307,12 @@
         addTag(ele, "<br>")
 
         await type("Phone: +92 3237909001", ele)
+        addTag(ele, "<br>")
+
+        addTag(ele, "<a href='https://www.linkedin.com/in/hisan-n-5b0717109/'>LinkedIn</a>")
+        addTag(ele, "<br>")
+
+        addTag(ele, "<a href='https://github.com/Hsn37'>Github</a>")
         addTag(ele, "<br>")
     }
 
