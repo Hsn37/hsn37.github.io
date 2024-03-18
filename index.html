@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
@@ -109,7 +110,7 @@
             width: 200px;
             margin-top: 5px;
         }
-        
+
         #loader {
             width: 10%;
             transition: width 1s ease-in-out;
@@ -149,15 +150,17 @@
                 font-size: 8px;
             }
         }
-
     </style>
 </head>
+
 <body>
     <div id="loading-screen">
         <img src="assets/load.png" width="100px">
         <div id="progress-bar">
-            <div style="width: 100%; background-color: #666; height: 8px; border-radius: 5px; position: absolute;"></div>
-            <div id="loader" style="background-color: white; height: 8px; border-radius: 5px; position: absolute;"></div>
+            <div style="width: 100%; background-color: #666; height: 8px; border-radius: 5px; position: absolute;">
+            </div>
+            <div id="loader" style="background-color: white; height: 8px; border-radius: 5px; position: absolute;">
+            </div>
         </div>
     </div>
     <div class="header">
@@ -179,29 +182,124 @@
     </div>
 </body>
 <script>
-    
+
     var ele = document.getElementById('textbox');
     var terminal = document.getElementById('terminal');
     var main_div = document.getElementById('main-div');
-    
+
     var projects = [
-        { name: 'VillaVista', link: 'https://villavistapk.com/' },
-        { name: 'PBI Car Services', link: 'https://pbicarservices.com/' },
-        { name: 'Moj Events', link: 'https://mojeventsndesigns.com/' },
-        { name: 'Alissa Chatbot - Google Play', link: 'projects/alissa' },
-        { name: 'Ghambeel', link: 'projects/ghambeel' },
-        { name: 'Physlogger Community', link: 'http://community.physlogger.com' },
-        { name: 'Physcloud (down for maintenance)', link: 'http://cloud.physlogger.com' },
-        { name: 'Q Learning Maze Solver', link: 'projects/qlearning' },
-        { name: 'My Portfolio', link: 'https://github.com/Hsn37/hsn37.github.io' },
-        { name: 'Minesweeper', link: 'https://github.com/Hsn37/minesweeper' },
-        { name: 'Snake', link: 'https://github.com/Hsn37/snake' },
-        { name: 'Tetris', link: 'https://github.com/Hsn37/Pyglet-Tetris' }
+        {
+            "description": "Shopify",
+            "projects": [
+                {
+                    "name": "Scents500",
+                    "link": "https://scents500.com/"
+                }
+            ]
+        },
+        {
+            "description": "Wordpress",
+            "projects": [
+                {
+                    "name": "VillaVista",
+                    "link": "https://villavistapk.com/"
+                },
+                {
+                    "name": "FUTranks",
+                    "link": "https://futranks.com/"
+                },
+                {
+                    "name": "LinkersUK",
+                    "link": "https://linkersuk.com/"
+                }
+            ]
+        },
+        {
+            "description": "Next JS Full Stack, Tailwind CSS",
+            "projects": [
+                {
+                    "name": "PBI Car Services",
+                    "link": "https://pbicarservices.com/"
+                }
+            ]
+        },
+        {
+            "description": "HTML, CSS, Vanilla JS",
+            "projects": [
+                {
+                    "name": "Moj Events",
+                    "link": "https://mojeventsndesigns.com/"
+                }
+            ]
+        },
+        {
+            "description": "React Native, AI Markup Language",
+            "projects": [
+                {
+                    "name": "Alissa Chatbot - Google Play",
+                    "link": "projects/alissa"
+                }
+            ]
+        },
+        {
+            "description": "Flutter",
+            "projects": [
+                {
+                    "name": "Ghambeel",
+                    "link": "projects/ghambeel"
+                }
+            ]
+        },
+        {
+            "description": "Discouse Forums",
+            "projects": [
+                {
+                    "name": "Physlogger Community",
+                    "link": "http://community.physlogger.com"
+                }
+            ]
+        },
+        {
+            "description": "HTML, CSS, Vanilla JS",
+            "projects": [
+                {
+                    "name": "My Portfolio",
+                    "link": "https://github.com/Hsn37/hsn37.github.io"
+                }
+            ]
+        },
+        {
+            "description": "Python",
+            "projects": [
+                {
+                    "name": "Q Learning Maze Solver",
+                    "link": "projects/qlearning"
+                },
+                {
+                    "name": "Minesweeper",
+                    "link": "https://github.com/Hsn37/minesweeper"
+                },
+                {
+                    "name": "Snake",
+                    "link": "https://github.com/Hsn37/snake"
+                },
+                {
+                    "name": "Tetris",
+                    "link": "https://github.com/Hsn37/Pyglet-Tetris"
+                }
+            ]
+        }
     ]
 
     var projects_text = ""
     for (let p of projects) {
-        projects_text += `<li><a href = '${p.link}' target="_blank">${p.name}</a></li>`
+        projects_text += `<li>`
+        for (const [i, p2] of p.projects.entries()) {
+            projects_text += `<a href = '${p2.link}' target="_blank">${p2.name}</a>`
+            if (i != p.projects.length - 1)
+                projects_text += ', '
+        }
+        projects_text += `  - <i>${p.description}</i></li>`
     }
 
     function wait(ms) {
@@ -212,10 +310,10 @@
         skip = 1
         if (element.innerHTML[element.innerHTML.length - 1] == "|")
             element.innerHTML = element.innerHTML.substring(0, element.innerHTML.length - 1);
-        
+
         if (string[0] != '~') {
             element.innerHTML += string[0]
-        } 
+        }
         else {
             skip = 2
             times = parseInt(string[1])
@@ -225,7 +323,7 @@
                 await wait(50)
                 element.innerHTML = element.innerHTML.substring(0, element.innerHTML.length - 1);
                 await wait(50)
-            }         
+            }
         }
 
         if (string.length == 1 || (string[0] == '~' && string.length == 2))
@@ -239,7 +337,7 @@
 
     function get_date() {
         let today = new Date();
-        let date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear() 
+        let date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear()
         let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
         return date + ' ' + time;
@@ -247,7 +345,7 @@
 
     async function nav_update() {
         let header_text = document.getElementById('header-text')
-        
+
         header_text.innerHTML = get_date()
     }
 
@@ -277,9 +375,9 @@
         addTag(ele, "<br><br>")
         await type("While I like to call myself a ", ele)
         addTag(ele, "<u>Machine Learning Engineer</u> ")
-        await type("now, it'd be safe to say I've had my fair share of ", ele)
-        addTag(ele, "<u> Software Engineering</u> ")
-        await type("projects.", ele)
+        await type("now, it would be accurate to describe me as a seasoned ", ele)
+        addTag(ele, "<u>Software Engineer</u> ")
+        await type("who has undertaken numerous software engineering projects over the years.", ele)
 
         addTag(ele, "<br><br>")
         await type("Here you will find my resume, a list of my projects, and some useful links.", ele)
@@ -317,10 +415,10 @@
     }
 
     window.onload = async () => {
-        
+
         document.getElementById("loader").style.width = "100%"
         await wait(2000)
-        
+
         let loader_screen = document.getElementById("loading-screen")
 
         loader_screen.style.opacity = "0"
@@ -340,4 +438,5 @@
     }
 
 </script>
+
 </html>
